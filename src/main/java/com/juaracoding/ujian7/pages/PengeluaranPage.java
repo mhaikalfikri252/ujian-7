@@ -17,13 +17,46 @@ public class PengeluaranPage {
 	By btnAllow = By.id("com.android.permissioncontroller:id/permission_allow_button");
 	By btnBackup = By.id("android:id/button2");
 	By btnAdd = By.id("com.chad.financialrecord:id/fabMenu");
-	By AddDate = By.id("com.chad.financialrecord:id/tvDate");
-	By BtnCategory = By.id("com.chad.financialrecord:id/spCategory");
+	By btnDate = By.id("com.chad.financialrecord:id/tvDate");
+	// By accessibility id
+	// 09 April 2022
+	By btnOkDate = By.id("android:id/button1");
+	By btnCategory = By.id("com.chad.financialrecord:id/spCategory");
 	By addCategory = By.xpath("//android.widget.TextView[contains(@text, 'Pulsa')]");
-	By AddAmount = By.id("com.chad.financialrecord:id/etAmount");
-	By AddNote = By.id("com.chad.financialrecord:id/etNote");
+	By addAmount = By.id("com.chad.financialrecord:id/etAmount");
+	By addNote = By.id("com.chad.financialrecord:id/etNote");
 	By btnSave = By.id("com.chad.financialrecord:id/btSave");
 	By textExpense = By.id("com.chad.financialrecord:id/tvExpense");
+
+	public void inputPengeluaran(String jumlah, String keterangan) {
+		tunggu(3);
+		driver.findElement(btnAllow).click();
+		tunggu(1);
+		driver.findElement(btnBackup).click();
+		tunggu(1);
+		driver.findElement(btnAdd).click();
+		tunggu(1);
+		driver.findElement(btnDate).click();
+		tunggu(1);
+		driver.findElementByAccessibilityId("08 April 2022").click();
+		tunggu(1);
+		driver.findElement(btnOkDate).click();
+		tunggu(1);
+		driver.findElement(btnCategory).click();
+		tunggu(1);
+		driver.findElement(addCategory).click();
+		tunggu(1);
+		driver.findElement(addAmount).sendKeys(jumlah);
+		tunggu(1);
+		driver.findElement(addNote).sendKeys(keterangan);
+		tunggu(1);
+		driver.findElement(btnSave).click();
+		tunggu(1);
+	}
+
+	public String getPengeluaran() {
+		return driver.findElement(textExpense).getText();
+	}
 
 	public void tunggu(int detik) {
 		try {
